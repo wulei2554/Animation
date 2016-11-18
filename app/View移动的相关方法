@@ -1,0 +1,29 @@
+一.View移动的相关方法总结:
+  1.通过改变view在父View的layout位置来移动,但是只能移动指定的View:
+    view.layout(l,t,r,b);
+	view.offsetLeftAndRight(offset);//同时改变left和right
+	view.offsetTopAndBottom(offset);//同时改变top和bottom
+  2.通过改变scrollX和scrollY来移动,但是可以移动所有的子View；
+    scrollTo(x,y);
+	scrollBy(xOffset,yOffset);
+  3.通过改变Canvas绘制的位置来移动View的内容:
+    canvas.drawBitmap(bitmap, left, top, paint)
+	
+二.使用ViewDragHelper来处理移动
+  1.ViewDragHelper在高版本的v4包(android4.4以上的v4)中
+  2.它主要用于处理ViewGroup中对子View的拖拽处理
+  3.它是Google在2013年开发者大会提出的 
+  4.它主要封装了对View的触摸位置，触摸速度，移动距离等的检测和Scroller,通过接口回调的
+    方式告诉我们;只需要我们指定是否需要移动，移动多少等;  
+  5.本质是对触摸事件的解析类;
+	
+三.getHeight和getMeasuredHeight的区别:
+  getMeasuredHeight:只要view执行完onMeasure方法就能够获取到值；
+  getHeight：只有view执行完layout才能获取到值;
+  
+四.在自定义ViewGroup的时候，如果对子View的测量没有特殊的需求，那么可以继承系统已有的
+   布局(比如FrameLayout)，目的是为了让已有的布局帮我们实行onMeasure;
+   
+   
+  
+  
